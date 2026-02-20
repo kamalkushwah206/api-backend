@@ -42,7 +42,15 @@ app.use('/userinterface', UserInterfaceRouter);
 app.use('/restaurantpictures', restaurantPicturesRouter)
 
 
+const mysql = require('mysql2');
 
+const db = mysql.createConnection({
+  host: process.env.MYSQLHOST,
+  port: process.env.MYSQLPORT,
+  user: process.env.MYSQLUSER,
+  password: process.env.MYSQLPASSWORD,
+  database: process.env.MYSQLDATABASE,
+});
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
